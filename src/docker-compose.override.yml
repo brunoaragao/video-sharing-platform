@@ -1,0 +1,35 @@
+services:
+  video-sharing-api:
+    ports:
+      - "5000:80"
+    environment:
+      ASPNETCORE_ENVIRONMENT: "Development"
+      ASPNETCORE_URLS: "http://+:80"
+      ConnectionStrings__VideoSharingConnection: "Host=postgres;Database=video-sharing;Username=postgres;Password=postgres"
+      JWT__Key: f2045202-d3a8-4b36-8fc9-6bf6e2d792c8-8de13674-e163-49b5-a588-d1f5d1ae3ce8
+      JWT__Issuer: identity
+      JWT__Audience: identity
+
+  identity-api:
+    ports:
+      - "5001:80"
+    environment:
+      ASPNETCORE_ENVIRONMENT: "Development"
+      ASPNETCORE_URLS: "http://+:80"
+      ConnectionStrings__IdentityConnection: "Host=postgres;Database=identity;Username=postgres;Password=postgres"
+      JWT__Key: f2045202-d3a8-4b36-8fc9-6bf6e2d792c8-8de13674-e163-49b5-a588-d1f5d1ae3ce8
+      JWT__Issuer: identity
+      JWT__Audience: identity
+
+  postgres:
+    ports:
+      - "5433:5432"
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: postgres
+    volumes:
+      - video-sharing-platform-data:/var/lib/postgresql/data
+
+volumes:
+  video-sharing-platform-data:
+    name: video-sharing-platform-data

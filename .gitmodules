@@ -1,0 +1,6 @@
+[submodule "src/Services/VideoSharing"]
+	path = src/Services/VideoSharing
+	url = https://github.com/brunoaragao/video-sharing-platform-video-sharing-service
+[submodule "src/Services/Identity"]
+	path = src/Services/Identity
+	url = https://github.com/brunoaragao/video-sharing-platform-identity-service
