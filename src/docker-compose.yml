@@ -1,0 +1,22 @@
+name: "video-sharing-platform"
+
+services:
+  video-sharing-api:
+    image: video-sharing-api
+    build:
+      context: ./Services/VideoSharing
+      dockerfile: Dockerfile
+    depends_on:
+      - postgres
+
+  identity-api:
+    image: identity-api
+    build:
+      context: ./Services/Identity
+      dockerfile: Dockerfile
+    depends_on:
+      - postgres
+
+  postgres:
+    image: postgres
+
